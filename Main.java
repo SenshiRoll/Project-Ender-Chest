@@ -1,6 +1,7 @@
 
 public class Main {
-	static Encoder en=new Encoder();
+	static Encoder en=new Encoder(0x400);
+	static Encoder us=new Encoder(0x400);
 	static int[][] stor=new int[0b10][0x400];
 	public static void main(String[] args) {
 		System.out.print("Input formt: W to withdraw, D to deposit. Then follow with the item name and amount.\n\nExample of format:D;redstone dust;26\n");//not system, just coded to make it function, also code commands
