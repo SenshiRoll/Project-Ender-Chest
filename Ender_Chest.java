@@ -3,7 +3,7 @@ import java.util.*;
  * Every time a new instance of an "ender chest" is created in the world, it runs on a thread of solely ender chests
  * this ensures processing order as well as having no interference with the main system
  */
-public class Ender_Chest implements userInterface{
+public class Ender_Chest{
 	public static ArrayList<String> itemsAvaliable=new ArrayList<String>();
 	public Ender_Chest() {
 	
