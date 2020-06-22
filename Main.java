@@ -30,5 +30,8 @@ public class Main {
 		stor[1][code]+=amount/1728;
 		deposit(code,(amount%1728)+stor[0][code]);
 	}
+	public static void extract() {
+		//an extraction for the interfaces that can synchronize the inventory through communication with the interfaces, part of network implementation
+	}
 }
 

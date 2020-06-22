@@ -6,7 +6,8 @@ import java.util.*;
 public class Ender_Chest{
 	public static ArrayList<String> itemsAvaliable=new ArrayList<String>();
 	public Ender_Chest() {
-	
+	//whenever a new instance is created, it takes all of the the set items in storage and sends them to the new instance
+		Main.extract();
 	}
 	private class infoPackage{
 		public char action;
