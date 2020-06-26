@@ -1,41 +1,44 @@
 import java.util.ArrayList;
-
 public class Main {
-	public static ArrayList<infoPackage> packages = new ArrayList<infoPackage>();
-	public static ArrayList<Ender_Chest> interfaces = new ArrayList<Ender_Chest>();	
-	static Encoder en=new Encoder(0x400);
-	static Encoder us=new Encoder(0x400);
-	static int[][] stor=new int[0b10][0x400];
-
+	public static ArrayList<infoPackage> superPacket=new ArrayList<infoPackage>();
+	public static ArrayList<userInterface> interfaces=new ArrayList<userInterface>();
+	static Encoder en=new Encoder(0x500);
+	static int[][] stor=new int[0b10][0x500];
 	public static void main(String[] args) {
-		System.out.print("Input formt: W to withdraw, D to deposit. Then follow with the item name and amount.\n\nExample of format:D;redstone dust;26\n");//not system, just coded to make it function, also code commands
+		/*System.out.print("Input format: W to withdraw, D to deposit. Then follow with the item name and amount.\n\nExample of format:D;redstone dust;26\n");//not system, just coded to make it function, also code commands
 		for (int i=0;i<20;i++) {
 			System.out.print("*");
 		}
-
-		Thread theinterfaces = new Thread(){
+		System.out.print("\n");
+		*/
+		Thread allInterfaces=new Thread() {
 			public void run() {
-				for(int i = 0; i < interfaces.size(); i++) {
-					interfaces.get(i).processPackage();
+				for(int i=0;i<interfaces.size();i++) {
+					interfaces.get(i).run();
 				}
 			}
 		};
-
-		System.out.print("\n");
-		while (true) {
-			// process stuff for all of the interfaces
-			theinterfaces.run();
+		Thread networkConnections=new Thread() {
+			public void run() {
+				//handle all network communication through infoPackages
+			}
+		};
+		while(true) {
+			allInterfaces.run();
+			networkConnections.run();
+			for(int i = 0;i<superPacket.size();i++) {
+				if (superPacket.get(i).action=='D') {deposit(superPacket.get(i).item,superPacket.get(i).amount);} else if(superPacket.get(i).action=='W') {withdraw(superPacket.get(i).item,superPacket.get(i).amount);} // there it is, that's the entire storage process, one line
+			}
 		}
 	}
-
-	public static void withdraw(String item,int amount) {
+	public static void withdraw(Item item,int amount) {
 		int code=en.getCode(item);
 		if (stor[1][code]==0) {amount=stor[0][code];stor[0][code]=0;return;}
 		stor[1][code]-=amount;
 		amount*=1728;
 		System.out.print("You have been given "+amount+" "+item);
 	}
-	public static void deposit(String item,int amount) {
+	public static void deposit(Item item,int amount) {
 		int code=Encoder.autoEncoder(item);
 		deposit(code,amount);
 	}
@@ -45,6 +48,9 @@ public class Main {
 	}
 	public static void extract() {
 		//an extraction for the interfaces that can synchronize the inventory through communication with the interfaces, part of network implementation
+	}
+	public static boolean contains(Item item) {
+		if(stor[1][en.encoder(item)]==0) {return false;}else {return true;}
 	}
 }
 

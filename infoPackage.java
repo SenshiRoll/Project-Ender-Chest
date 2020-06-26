@@ -1,11 +1,16 @@
-public class infoPackage{
-    public char action;
-    public String item;
-    public int amount;
-    infoPackage(String[] in){
-        action=in[0].charAt(0);
-        item=in[1];
-        if (in[2].isEmpty()) {amount=1;return;}
-        amount=Integer.parseInt(in[2]);
-    }
+
+public class infoPackage {
+	public char action;
+	public Item item;
+	public int amount; //amount is handled in shulker boxes
+	infoPackage(char action,Item item,int amount){
+		action=this.action;
+		item=this.item;
+		amount=this.amount;
+	}
+	infoPackage(char action,Item item){
+		action=this.action;
+		item=this.item;
+		amount=1;
+	}
 }

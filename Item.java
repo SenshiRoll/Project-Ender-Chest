@@ -1,10 +1,11 @@
+
 public class Item {
     byte id;
-    short count;
+    byte count;
     String name;
     String nbt;
 
-    public Item(byte id, short count, String name, String nbt) {
+    public Item(byte id, byte count, String name, String nbt) {
         this.id = id;
         this.count = count;
         this.name = name;
@@ -12,7 +13,7 @@ public class Item {
     }
 
     public Item(byte id, String name, String nbt) {
-        this(id, (short)1, name, nbt);
+        this(id, (byte)1, name, nbt);
     }
 
     public Item(byte id, String name) {
@@ -23,7 +24,7 @@ public class Item {
         this.id = id;
     }
 
-    public void setCount(short count) {
+    public void setCount(byte count) {
         this.count = count;
     }
 
@@ -49,6 +50,10 @@ public class Item {
 
     public String getNbt() {
         return nbt;
+    }
+    
+    public boolean isEmpty() {
+    	return this.id==0;
     }
 
 }
