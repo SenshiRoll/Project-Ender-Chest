@@ -1,20 +1,33 @@
+import java.util.ArrayList;
 
 public class Main {
+	public static ArrayList<infoPackage> packages = new ArrayList<infoPackage>();
+	public static ArrayList<Ender_Chest> interfaces = new ArrayList<Ender_Chest>();	
 	static Encoder en=new Encoder(0x400);
 	static Encoder us=new Encoder(0x400);
 	static int[][] stor=new int[0b10][0x400];
+
 	public static void main(String[] args) {
 		System.out.print("Input formt: W to withdraw, D to deposit. Then follow with the item name and amount.\n\nExample of format:D;redstone dust;26\n");//not system, just coded to make it function, also code commands
 		for (int i=0;i<20;i++) {
 			System.out.print("*");
 		}
+
+		Thread theinterfaces = new Thread(){
+			public void run() {
+				for(int i = 0; i < interfaces.size(); i++) {
+					interfaces.get(i).processPackage();
+				}
+			}
+		};
+
 		System.out.print("\n");
 		while (true) {
-			/*
-			 * each instance of the interfaces as well as normal system processes
-			 */
+			// process stuff for all of the interfaces
+			theinterfaces.run();
 		}
 	}
+
 	public static void withdraw(String item,int amount) {
 		int code=en.getCode(item);
 		if (stor[1][code]==0) {amount=stor[0][code];stor[0][code]=0;return;}
