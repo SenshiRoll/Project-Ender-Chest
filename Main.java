@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 public class Main {
 	public static ArrayList<infoPackage> superPacket=new ArrayList<infoPackage>();
-	public static ArrayList<userInterface> interfaces=new ArrayList<userInterface>();
+	public static ArrayList<networkConnection> connections=new ArrayList<networkConnection>();
 	static Encoder en=new Encoder(0x500);
 	static int[][] stor=new int[0b10][0x500];
 	public static void main(String[] args) {
@@ -11,21 +11,15 @@ public class Main {
 		}
 		System.out.print("\n");
 		*/
-		Thread allInterfaces=new Thread() {
+		Thread network=new Thread() {
 			public void run() {
-				for(int i=0;i<interfaces.size();i++) {
-					interfaces.get(i).run();
+				for(int i=0;i<connections.size();i++) {
+						connections.get(i).run();
 				}
 			}
 		};
-		Thread networkConnections=new Thread() {
-			public void run() {
-				//handle all network communication through infoPackages
-			}
-		};
 		while(true) {
-			allInterfaces.run();
-			networkConnections.run();
+			network.run();
 			for(int i = 0;i<superPacket.size();i++) {
 				if (superPacket.get(i).action=='D') {deposit(superPacket.get(i).item,superPacket.get(i).amount);} else if(superPacket.get(i).action=='W') {withdraw(superPacket.get(i).item,superPacket.get(i).amount);} // there it is, that's the entire storage process, one line
 			}
