@@ -3,12 +3,17 @@ import java.util.*;
  * Every time a new instance of an "ender chest" is created in the world, it runs on a thread of solely ender chests
  * this ensures processing order as well as having no interference with the main system
  */
-public class userInterface implements Runnable{
+public class userInterface extends NetworkConnection implements Runnable{
 	public static ArrayList<String> itemsAvaliable=new ArrayList<String>();
 	public userInterface() {
 	//whenever a new instance is created, it takes all of the the set items in storage and sends them to the new instance
 		Main.extract();
 	}
+
+	public void recievePackage(infoPackage info) {
+		
+	}
+
 	public infoPackage createPackage() {
 		Scanner in=new Scanner(System.in);
 		String[] userIn=in.nextLine().trim().split(";");
