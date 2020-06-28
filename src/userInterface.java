@@ -4,7 +4,7 @@ import java.util.*;
  * Every time a new instance of an "ender chest" is created in the world, it runs on a thread of solely ender chests
  * this ensures processing order as well as having no interference with the main system
  */
-public class userInterface extends networkConnection implements Runnable{
+public class userInterface extends networkConnection {
 	public static ArrayList<String> itemsAvaliable=new ArrayList<String>();
 	private static Scanner in;
 	
