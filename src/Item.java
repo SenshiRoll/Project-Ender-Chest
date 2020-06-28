@@ -1,11 +1,11 @@
 
 public class Item {
-    byte id;
-    byte count;
-    String name;
-    String nbt;
+    private byte id;
+    private short count;
+    private String name;
+    private String nbt;
 
-    public Item(byte id, byte count, String name, String nbt) {
+    public Item(byte id, short count, String name, String nbt) {
         this.id = id;
         this.count = count;
         this.name = name;
@@ -24,7 +24,7 @@ public class Item {
         this.id = id;
     }
 
-    public void setCount(byte count) {
+    public void setCount(short count) {
         this.count = count;
     }
 
@@ -54,6 +54,15 @@ public class Item {
     
     public boolean isEmpty() {
     	return this.id==0;
+    }
+
+    public String toString() {
+        return String.format("Item:[Id : %s, Amount : %s, ItemInfo : %s{%s}]", this.id, this.count, this.name, this.nbt)
+    }
+
+    public Item take(short amount) {
+        this.count -= amount;
+        return new Item(this.id, amount, this.name, this.nbt);
     }
 
 }
