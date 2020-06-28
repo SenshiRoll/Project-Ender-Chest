@@ -57,7 +57,7 @@ public class Item {
     }
 
     public String toString() {
-        return String.format("Item:[Id : %s, Amount : %s, ItemInfo : %s{%s}]", this.id, this.count, this.name, this.nbt)
+        return String.format("Item:[Id : %s, Amount : %s, ItemInfo : %s{%s}]", this.id, this.count, this.name, this.nbt);
     }
 
     public Item take(short amount) {
