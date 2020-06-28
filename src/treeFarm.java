@@ -1,5 +1,5 @@
 
-public class treeFarm extends networkConnection implements Runnable{
+public class treeFarm extends networkConnection {
 	private Item bone_meal=new Item((byte)0,"bone_meal");//0 is a placeholder right now
 	private boolean hasBoneMeal;
 	private int boneMealNeeded;
