@@ -8,12 +8,6 @@ public class Main {
 	static int[][] stor=new int[0b10][0x500];
 	
 	public static void main(String[] args) {
-		/*System.out.print("Input format: W to withdraw, D to deposit. Then follow with the item name and amount.\n\nExample of format:D;redstone dust;26\n");//not system, just coded to make it function, also code commands
-		for (int i=0;i<20;i++) {
-			System.out.print("*");
-		}
-		System.out.print("\n");
-		*/
 		Thread network=new Thread() {
 			public void run() {
 				for(int i=0;i<connections.size();i++) {
@@ -21,14 +15,12 @@ public class Main {
 				}
 			}
 		};
-		/* while(true) {
+		while(true) {
 			network.run();
 			for(int i = 0;i<superPacket.size();i++) {
 				if (superPacket.get(i).action=='D') {deposit(superPacket.get(i).item,superPacket.get(i).amount);} else if(superPacket.get(i).action=='W') {withdraw(superPacket.get(i).item,superPacket.get(i).amount);} // there it is, that's the entire storage process, one line
 			}
-		} */
-		userInterface ui = new userInterface();
-		ui.run();
+		}
 	}
 	public static void withdraw(Item item,int amount) {
 		int code=en.getCode(item);

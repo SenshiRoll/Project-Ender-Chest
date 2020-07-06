@@ -17,8 +17,8 @@ public class userInterface extends networkConnection {
 		String[] userIn=in.nextLine().trim().split(";");
 		infoPackage info = null;
 		switch(userIn.length) {
-		//case 2: info=new infoPackage(userIn[0].charAt(0),userIn[1]); //needs turned into items
-		//case 3: info=new infoPackage(userIn[0].charAt(0),userIn[1],Integer.parseInt(userIn[2])); //needs turned into items
+		case 2: info=new infoPackage(userIn[0].charAt(0),new Item(BlockId.userIn[1],userIn[1]);//still not correct, gotta wait until block ids are ready
+		case 3: info=new infoPackage(userIn[0].charAt(0),new Item(BlockId.userIn[1],userIn[1],Integer.parseInt(userIn[2]));//still not correct, gotta wait until block ids are ready
 		default: System.out.println("Invalid Argument"); info=this.createPackage(); break;
 		}
 		return info;
@@ -36,11 +36,11 @@ public class userInterface extends networkConnection {
 		System.out.println("What would you like to do with the item? (D/W); D = deposit. W = Withdraw");
 
 		String action = in.nextLine();
-		char parsedAction = action.charAt(0);
+		char parsedAction = action.toUpperCase().charAt(0);
 
-		if(parsedAction == 'd' || parsedAction == 'D') {
+		if(parsedAction == 'D') {
 			depositItem(item);
-		} else if (parsedAction == 'w' || parsedAction == 'W') {
+		} else if (parsedAction == 'W') {
 			withdrawItem(item);
 		} else {
 			System.out.println("Error, Incorrect Input: Please enter either a W or a D for your action.");

@@ -1,11 +1,11 @@
 
 public class Item {
     private byte id;
-    private short count;
+    private byte count;
     private String name;
     private String nbt;
 
-    public Item(byte id, short count, String name, String nbt) {
+    public Item(byte id, byte count, String name, String nbt) {
         this.id = id;
         this.count = count;
         this.name = name;
@@ -24,7 +24,7 @@ public class Item {
         this.id = id;
     }
 
-    public void setCount(short count) {
+    public void setCount(byte count) {
         this.count = count;
     }
 
