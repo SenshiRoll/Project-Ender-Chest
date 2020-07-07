@@ -1,7 +1,7 @@
 
 public final class BlockId {
 	//store block ids to create items easier
-	public final static Map<String,Byte> Id=new HashMap<>(0x500);
+	public static Map<String,Byte> Id=new HashMap<>(0x500);
 	public void build(){
 		Id.put("stone",1);
 		Id.put("");
