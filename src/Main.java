@@ -8,6 +8,7 @@ public class Main {
 	static int[][] stor=new int[0b10][0x500];
 	
 	public static void main(String[] args) {
+		BlockId.build();
 		Thread network=new Thread() {
 			public void run() {
 				for(int i=0;i<connections.size();i++) {
