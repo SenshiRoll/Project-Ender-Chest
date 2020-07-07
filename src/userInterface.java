@@ -17,8 +17,8 @@ public class userInterface extends networkConnection {
 		String[] userIn=in.nextLine().trim().split(";");
 		infoPackage info = null;
 		switch(userIn.length) {
-		case 2: info=new infoPackage(userIn[0].charAt(0),new Item(BlockId.userIn[1],userIn[1]);//still not correct, gotta wait until block ids are ready
-		case 3: info=new infoPackage(userIn[0].charAt(0),new Item(BlockId.userIn[1],userIn[1],Integer.parseInt(userIn[2]));//still not correct, gotta wait until block ids are ready
+		case 2: info=new infoPackage(userIn[0].charAt(0),new Item(BlockId.Id.get(userIn[1]),userIn[1]);
+		case 3: info=new infoPackage(userIn[0].charAt(0),new Item(BlockId.Id.get(userIn[1]),userIn[1],Integer.parseInt(userIn[2]));
 		default: System.out.println("Invalid Argument"); info=this.createPackage(); break;
 		}
 		return info;
