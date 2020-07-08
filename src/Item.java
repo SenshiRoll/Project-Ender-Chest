@@ -1,26 +1,26 @@
 
 public class Item {
-    private byte id;
+    private long id;
     private byte count;
     private String name;
     private String nbt;
 
-    public Item(byte id, byte count, String name, String nbt) {
+    public Item(long id, byte count, String name, String nbt) {
         this.id = id;
         this.count = count;
         this.name = name;
         this.nbt = nbt;
     }
 
-    public Item(byte id, String name, String nbt) {
+    public Item(long id, String name, String nbt) {
         this(id, (byte)1, name, nbt);
     }
 
-    public Item(byte id, String name) {
+    public Item(long id, String name) {
         this(id, name, "");
     }
 
-    public void setId(byte id) {
+    public void setId(long id) {
         this.id = id;
     }
 
