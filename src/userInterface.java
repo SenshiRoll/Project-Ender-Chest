@@ -1,5 +1,5 @@
 package src;
-import java.util.*;
+import java.util.ArrayList;
 /*
  * Every time a new instance of an "ender chest" is created in the world, it runs on a thread of solely ender chests
  * this ensures processing order as well as having no interference with the main system
