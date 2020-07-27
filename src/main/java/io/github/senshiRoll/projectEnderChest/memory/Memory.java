@@ -6,34 +6,34 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-public class Memory<K,V> extends AbstractMap<K,V> implements Serializable {
-	Node<K, V> memory;
+public class Memory<Key,Value> extends AbstractMap<Key,Value> implements Serializable {
+	Node<Key, Value> memory;
 	private static final long serialVersionUID = 117578722165722509L;
 	public Memory(int size) {
-		this.memory=new Node<K,V>();
+		this.memory=new Node<Key,Value>();
 	}
 
 	@Override
-	public Set<Entry<K, V>> entrySet() {
+	public Set<Entry<Key, Value>> entrySet() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-    static class Node<K,V> implements Map.Entry<K, V> {
+    static class Node<Key,Value> implements Map.Entry<Key, Value> {
 
 		@Override
-		public K getKey() {
+		public Key getKey() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
-		public V getValue() {
+		public Value getValue() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
-		public V setValue(V value) {
+		public Value setValue(Value value) {
 			// TODO Auto-generated method stub
 			return null;
 		}
@@ -65,25 +65,25 @@ public class Memory<K,V> extends AbstractMap<K,V> implements Serializable {
     }
 
     @Override
-    public V get(Object key) {
+    public Value get(Object key) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public V put(K key, V value) {
+    public Value put(Key key, Value value) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public V remove(Object key) {
+    public Value remove(Object key) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public void putAll(Map<? extends K, ? extends V> m) {
+    public void putAll(Map<? extends Key, ? extends Value> m) {
         // TODO Auto-generated method stub
 
     }
@@ -95,13 +95,13 @@ public class Memory<K,V> extends AbstractMap<K,V> implements Serializable {
     }
 
     @Override
-    public Set<K> keySet() {
+    public Set<Key> keySet() {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Collection<V> values() {
+    public Collection<Value> values() {
         // TODO Auto-generated method stub
         return null;
     }
