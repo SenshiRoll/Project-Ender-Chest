@@ -1,8 +1,8 @@
-package io.github.senshiRoll.projectEnderChest.network;
+package main.java.io.github.senshiRoll.projectEnderChest.network;
 
-import io.github.senshiRoll.projectEnderChest.Main;
-import io.github.senshiRoll.projectEnderChest.infoPackage;
-import io.github.senshiRoll.projectEnderChest.item.Item;
+import main.java.io.github.senshiRoll.projectEnderChest.Main;
+import main.java.io.github.senshiRoll.projectEnderChest.infoPackage;
+import main.java.io.github.senshiRoll.projectEnderChest.item.Item;
 
 public class treeFarm extends networkConnection {
 	private Item bone_meal = new Item((byte) 0, "bone_meal");// 0 is a placeholder right now

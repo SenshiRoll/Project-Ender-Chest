@@ -1,12 +1,12 @@
-package io.github.senshiRoll.projectEnderChest.network;
+package main.java.io.github.senshiRoll.projectEnderChest.network;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import io.github.senshiRoll.projectEnderChest.Main;
-import io.github.senshiRoll.projectEnderChest.infoPackage;
-import io.github.senshiRoll.projectEnderChest.item.BlockId;
-import io.github.senshiRoll.projectEnderChest.item.Item;
+import main.java.io.github.senshiRoll.projectEnderChest.Main;
+import main.java.io.github.senshiRoll.projectEnderChest.infoPackage;
+import main.java.io.github.senshiRoll.projectEnderChest.item.BlockId;
+import main.java.io.github.senshiRoll.projectEnderChest.item.Item;
 /*
  * Every time a new instance of an "ender chest" is created in the world, it runs on a thread of solely ender chests
  * this ensures processing order as well as having no interference with the main system

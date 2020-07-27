@@ -1,7 +1,7 @@
-package io.github.senshiRoll.projectEnderChest.network;
+package main.java.io.github.senshiRoll.projectEnderChest.network;
 
-import io.github.senshiRoll.projectEnderChest.Main;
-import io.github.senshiRoll.projectEnderChest.infoPackage;
+import main.java.io.github.senshiRoll.projectEnderChest.Main;
+import main.java.io.github.senshiRoll.projectEnderChest.infoPackage;
 
 public abstract class networkConnection implements Runnable {
 	public infoPackage info;

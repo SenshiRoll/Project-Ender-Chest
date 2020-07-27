@@ -1,4 +1,4 @@
-package io.github.senshiRoll.projectEnderChest.memory;
+package main.java.io.github.senshiRoll.projectEnderChest.memory;
 
 import java.io.Serializable;
 import java.util.AbstractMap;

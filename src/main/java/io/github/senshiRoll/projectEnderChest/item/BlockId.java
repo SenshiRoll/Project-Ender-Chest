@@ -1,4 +1,4 @@
-package io.github.senshiRoll.projectEnderChest.item;
+package main.java.io.github.senshiRoll.projectEnderChest.item;
 
 import java.util.HashMap;
 import java.util.Map;

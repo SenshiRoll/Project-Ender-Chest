@@ -1,6 +1,6 @@
-package io.github.senshiRoll.projectEnderChest;
+package main.java.io.github.senshiRoll.projectEnderChest;
 
-import io.github.senshiRoll.projectEnderChest.item.Item;
+import main.java.io.github.senshiRoll.projectEnderChest.item.Item;
 
 public class infoPackage {
 	public char action;

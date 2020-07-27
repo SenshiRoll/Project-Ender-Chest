@@ -1,4 +1,4 @@
-package io.github.senshiRoll.projectEnderChest.item;
+package main.java.io.github.senshiRoll.projectEnderChest.item;
 
 public class Item {
     private byte id;
