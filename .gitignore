@@ -29,3 +29,4 @@ build
 
 # Ignore udea stuff
 .idea
+/bin/
