@@ -17,6 +17,26 @@ public class Memory<K,V> extends AbstractMap<K,V> implements Map<K,V>, Serializa
 		// TODO Auto-generated method stub
 		return null;
 	}
-    
+    static class Node<K,V> implements Map.Entry<K, V> {
+
+		@Override
+		public K getKey() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public V getValue() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public V setValue(V value) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+    	
+    }
     
 }
