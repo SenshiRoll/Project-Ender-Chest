@@ -1,3 +1,4 @@
+package io.github.senshiRoll.projectEnderChest.item;
 
 public class Box {
 	Item[] box;

@@ -1,5 +1,11 @@
-package src;
+package io.github.senshiRoll.projectEnderChest;
+
 import java.util.ArrayList;
+
+import io.github.senshiRoll.projectEnderChest.item.BlockId;
+import io.github.senshiRoll.projectEnderChest.item.Item;
+import io.github.senshiRoll.projectEnderChest.memory.Encoder;
+import io.github.senshiRoll.projectEnderChest.network.networkConnection;
 
 public class Main {
 	public static ArrayList<infoPackage> superPacket=new ArrayList<infoPackage>();
