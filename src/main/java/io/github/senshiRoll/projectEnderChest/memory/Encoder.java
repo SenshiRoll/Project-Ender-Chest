@@ -6,7 +6,7 @@ import java.util.Set;
 
 import io.github.senshiRoll.projectEnderChest.item.Item;
 
-public class Encoder implements Map {
+public class Encoder<Key,Value> implements Map<Key,Value> {
 	static Item[] itemCodes;
 
 	public Encoder(int size) {
@@ -79,7 +79,7 @@ public class Encoder implements Map {
 	}
 
 	@Override
-	public Object get(Object key) {
+	public Value get(Object key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -91,7 +91,7 @@ public class Encoder implements Map {
 	}
 
 	@Override
-	public Object remove(Object key) {
+	public Value remove(Object key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
