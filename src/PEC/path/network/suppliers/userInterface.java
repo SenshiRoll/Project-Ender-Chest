@@ -1,24 +1,26 @@
-package main.java.io.github.senshiRoll.projectEnderChest.network;
+package PEC.path.network.suppliers;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import main.java.io.github.senshiRoll.projectEnderChest.Main;
-import main.java.io.github.senshiRoll.projectEnderChest.infoPackage;
-import main.java.io.github.senshiRoll.projectEnderChest.item.BlockId;
-import main.java.io.github.senshiRoll.projectEnderChest.item.Item;
-/*
+import PEC.item.BlockId;
+import PEC.item.Item;
+import PEC.path.Main;
+import PEC.path.infoPackage;
+import PEC.path.network.networkConnection;
+/**
  * Every time a new instance of an "ender chest" is created in the world, it runs on a thread of solely ender chests
  * this ensures processing order as well as having no interference with the main system
+ * <p> also needs extensive updates after multiple system updates
+ * @see treeFarm
+ * 
  */
-public class userInterface extends networkConnection {
-	public static ArrayList<String> itemsAvaliable=new ArrayList<String>();
+public class userInterface implements networkConnection {
 	private static Scanner in;
 	
 	public userInterface() {
 		in=new Scanner(System.in);
 		//whenever a new instance is created, it takes all of the the set items in storage and sends them to the new instance
-		Main.extract();
 	}
 	public infoPackage createPackage() {
 		String[] userIn=in.nextLine().trim().split(";");
@@ -65,5 +67,15 @@ public class userInterface extends networkConnection {
 
 		Item withdrawnItem = item.take(amnt);
 		System.out.println("Your item :\n" + withdrawnItem);
+	}
+	@Override
+	public PEC.path.infoPackage createPackage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void receivePackage(PEC.path.infoPackage info) {
+		// TODO Auto-generated method stub
+		
 	}
 }

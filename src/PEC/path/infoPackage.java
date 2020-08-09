@@ -1,6 +1,6 @@
-package main.java.io.github.senshiRoll.projectEnderChest;
+package PEC.path;
 
-import main.java.io.github.senshiRoll.projectEnderChest.item.Item;
+import PEC.item.Item;
 
 public class infoPackage {
 	public char action;

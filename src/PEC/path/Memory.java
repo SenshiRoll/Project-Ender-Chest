@@ -1,16 +1,31 @@
-package main.java.io.github.senshiRoll.projectEnderChest.memory;
+package PEC.path;
 
-import java.io.Serializable;
 import java.util.AbstractMap;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
+import PEC.item.Item;
+import PEC.item.ItemStack;
+import PEC.path.network.networkConnection;
 
-public class Memory<Key,Value> extends AbstractMap<Key,Value> implements Serializable {
-	Node<Key, Value> memory;
-	private static final long serialVersionUID = 117578722165722509L;
+/**
+ * Custom {@link HashMap} class for efficient storage of {@link Item}s in {@link Box} cells.
+ * <p>Last update: can be instanced and exist as its own satellite
+ * @author senshi
+ * @see Memory#hash(ItemStack)
+ * @param <Key>
+ * @param <Value>
+ * @TODO actually making it work
+ */
+public class Memory<Key,Value> extends AbstractMap<Key,Value> implements networkConnection {
+	Cell<Key, Value>[] memory;
+	Item[] I;
+	ArrayList<infoPackage> superPacket;
+	@SuppressWarnings("unchecked")
 	public Memory(int size) {
-		this.memory=new Node<Key,Value>();
+		this.memory=new Cell[size];
+		this.I=new Item[size];
 	}
 
 	@Override
@@ -18,7 +33,7 @@ public class Memory<Key,Value> extends AbstractMap<Key,Value> implements Seriali
 		// TODO Auto-generated method stub
 		return null;
 	}
-    static class Node<Key,Value> implements Map.Entry<Key, Value> {
+    static class Cell<Key,Value> implements Map.Entry<Key, Value> {
 
 		@Override
 		public Key getKey() {
@@ -105,5 +120,38 @@ public class Memory<Key,Value> extends AbstractMap<Key,Value> implements Seriali
         // TODO Auto-generated method stub
         return null;
     }
+
+	@Override
+	public infoPackage createPackage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void receivePackage(infoPackage info) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+	/**
+	 * <p>Incredibly lazy normal encoding method for "hashing" until we find a better method. 
+	 * While the parameter is a stack, it is mostly for convenience right now
+	 * @TODO more efficient method and box logic
+	 * @param ItemStack object  
+	 * @return int for indexing purposes
+	 * @throws Exception
+	 */
+	private int hash(ItemStack item) throws Exception {
+		for(int i=0;i<I.length;i++) {
+			if(I[i].equals(item.item))
+				return i;
+			else if(I[i].isEmpty() && (I[i-1].isEmpty()==false))
+				return i;
+		}
+		throw new Exception("MemoryFullException");
+	}
     
 }

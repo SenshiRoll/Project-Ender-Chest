@@ -1,4 +1,4 @@
-package main.java.io.github.senshiRoll.projectEnderChest.item;
+package PEC.item;
 
 public class Box {
 	Item[] box;
