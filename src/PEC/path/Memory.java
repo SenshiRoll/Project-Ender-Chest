@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
+import java.util.HashMap;
+
 import PEC.item.Item;
 import PEC.item.ItemStack;
 import PEC.path.network.networkConnection;
@@ -34,37 +36,38 @@ public class Memory<Key,Value> extends AbstractMap<Key,Value> implements network
 		return null;
 	}
     static class Cell<Key,Value> implements Map.Entry<Key, Value> {
+        final int hash;
+        final Key key;
+        Value value;
+        
+        Cell(int hash, Key key, Value value){
+        	this.hash=hash;
+        	this.key=key;
+        	this.value=value;
+        }
 
-		@Override
 		public Key getKey() {
-			// TODO Auto-generated method stub
-			return null;
+			return key;
 		}
 
-		@Override
 		public Value getValue() {
-			// TODO Auto-generated method stub
-			return null;
+			return value;
 		}
 
-		@Override
 		public Value setValue(Value value) {
-			// TODO Auto-generated method stub
-			return null;
+			Value v=this.value;
+			this.value=value;
+			return v;
 		}
     	
     }
 
-    @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.memory.length;
     }
 
-    @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+        return this.memory.length==0;
     }
 
     @Override
@@ -79,16 +82,32 @@ public class Memory<Key,Value> extends AbstractMap<Key,Value> implements network
         return false;
     }
 
-    @Override
+    /**
+     * Okay let me tell you a story about this one, since java is insistent on generalizing methods for data
+     * structures and that's not going to fly here. In order to make this method work for items, it has a
+     * conditional and a cast, and took longer than I care to admit.
+     */
     public Value get(Object key) {
-        // TODO Auto-generated method stub
-        return null;
+    	Cell<Key,Value> e; Value v=null;
+    	//h=key instanceof ItemStack ? hash((ItemStack)key) : null;
+        try {
+			v=(e = getNode(hash((ItemStack)key), key)) == null ? null : e.value;
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block, hopefully it's just for safety
+			e1.printStackTrace();
+		}
+        return v;
+    }
+    
+    Cell<Key, Value> getNode(int hash, Object key){
+    	Cell<Key,Value> c;
+    	c=this.memory[hash].getKey().equals(key) ? this.memory[hash] : null;
+    	return c;
     }
 
-    @Override
     public Value put(Key key, Value value) {
-        // TODO Auto-generated method stub
-        return null;
+		return value;
+    	
     }
 
     @Override
@@ -97,11 +116,8 @@ public class Memory<Key,Value> extends AbstractMap<Key,Value> implements network
         return null;
     }
 
-    @Override
-    public void putAll(Map<? extends Key, ? extends Value> m) {
-        // TODO Auto-generated method stub
-
-    }
+    //AbstractMap artifact
+    public void putAll(Map<? extends Key, ? extends Value> m) {}
 
     @Override
     public void clear() {
