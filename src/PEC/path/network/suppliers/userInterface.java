@@ -1,12 +1,11 @@
 package PEC.path.network.suppliers;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import PEC.item.BlockId;
 import PEC.item.Item;
-import PEC.path.Main;
 import PEC.path.infoPackage;
+import PEC.path.network.Network;
 import PEC.path.network.networkConnection;
 /**
  * Every time a new instance of an "ender chest" is created in the world, it runs on a thread of solely ender chests
@@ -17,23 +16,26 @@ import PEC.path.network.networkConnection;
  */
 public class userInterface implements networkConnection {
 	private static Scanner in;
+	Network local;
 	
-	public userInterface() {
+	public userInterface(Network net) {
 		in=new Scanner(System.in);
-		//whenever a new instance is created, it takes all of the the set items in storage and sends them to the new instance
+		this.local=net;
+		net.net.add(this);
 	}
 	public infoPackage createPackage() {
 		String[] userIn=in.nextLine().trim().split(";");
 		infoPackage info = null;
 		switch(userIn.length) {
-		case 2: info=new infoPackage(userIn[0].charAt(0),new Item(BlockId.Id.get(userIn[1]),userIn[1]));
-		case 3: info=new infoPackage(userIn[0].charAt(0),new Item(BlockId.Id.get(userIn[1]),userIn[1],Integer.parseInt(userIn[2])));
+		case 2: info=new infoPackage(userIn[0].toUpperCase().charAt(0),new Item(BlockId.Id.get(userIn[1]),userIn[1]));
+		case 3: info=new infoPackage(userIn[0].toUpperCase().charAt(0),new Item(BlockId.Id.get(userIn[1]),userIn[1]),Integer.parseInt(userIn[2]));
 		default: System.out.println("Invalid Argument"); info=this.createPackage(); break;
 		}
 		return info;
 	}
 	public void run() {
-		super.run();
+		//no idea how to not spam the thread tbh
+		this.local.net.get(0).receivePackage(this.createPackage());
 	}
 	@Override
 	public void receivePackage(infoPackage info) {
@@ -65,17 +67,7 @@ public class userInterface implements networkConnection {
 		System.out.println("How many would you like to take?");
 		short amnt = in.nextShort();
 
-		Item withdrawnItem = item.take(amnt);
-		System.out.println("Your item :\n" + withdrawnItem);
-	}
-	@Override
-	public PEC.path.infoPackage createPackage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void receivePackage(PEC.path.infoPackage info) {
-		// TODO Auto-generated method stub
-		
+		//Item withdrawnItem = item.take(amnt);
+		//System.out.println("Your item :\n" + withdrawnItem);
 	}
 }

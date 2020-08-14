@@ -128,7 +128,7 @@ public class Memory<Key,Value> extends AbstractMap<Key,Value> implements network
 	}
 
 	public void receivePackage(infoPackage info) {
-		// TODO Auto-generated method stub
+		this.superPacket.add(info);
 	}
 
 	@Override

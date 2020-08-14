@@ -1,9 +1,9 @@
 package PEC.item;
 
 public class Box {
-	Item[] box;
-	Box(Item[] itemList){
-		box=new Item[27];
+	ItemStack[] box;
+	Box(ItemStack[] itemList){
+		box=new ItemStack[27];
 		for(int i=0;i<itemList.length || i<27;i++) {
 			box[i]=itemList[i];
 		}
